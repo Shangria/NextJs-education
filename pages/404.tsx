@@ -9,6 +9,7 @@ const Error = () => {
             router.push('/');
         }, 1000);
     }, [router]);
+
     return (
         <h1>Error</h1>
     );
