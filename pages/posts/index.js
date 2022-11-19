@@ -3,9 +3,8 @@ import Head from "next/head";
 import Link from "next/link";
 
 
-const url = 'https://jsonplaceholder.typicode.com/users';
-
 export const getStaticProps = async () => {
+    const url = `https://jsonplaceholder.typicode.com/posts`;
     const response = await fetch(url);
     const data = await response.json();
 
@@ -17,28 +16,24 @@ export const getStaticProps = async () => {
     }
 
     return {
-        props: {contacts: data},
+        props: {posts: data},
     };
 };
 
 
-const Contacts = ({contacts}) => {
+const Posts = ({posts}) => {
 
     return (
         <>
             <Head>
-                <title>Contacts</title>
+                <title>Posts</title>
             </Head>
-            <Heading text="Contacts list"></Heading>
+            <Heading text="Posts list"></Heading>
             <ul>
-                {/* {contacts.map((contact) => (
-                        <li key={contact.name}>{contact.name}</li>
-                    ))}*/}
-
                 {
-                    contacts && contacts.map(({name, id}) => (
+                    posts && posts.map(({id, title}) => (
                         <li key={id}>
-                            <Link href={`/contacts/${id}`}>{name}</Link>
+                            <Link href={`/posts/${id}`}>{title}</Link>
                         </li>
                     ))
                 }
@@ -48,4 +43,4 @@ const Contacts = ({contacts}) => {
     );
 };
 
-export default Contacts;
+export default Posts;
