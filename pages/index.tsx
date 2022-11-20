@@ -4,19 +4,26 @@ import Socials from "../components/Socials";
 
 
 export const getStaticProps = async () => {
-    const response = await fetch(`${process.env.API_HOST}/socials/`);
-    const data = await response.json();
+    try {
+        const response = await fetch(`${process.env.API_HOST}/socials/`);
+        const data = await response.json();
 
-    //special object next then data is null
-    if (!data) {
+        //special object next then data is null
+        if (!data) {
+            return {
+                notFound: true
+            };
+        }
+
         return {
-            notFound: true
+            props: {socials: data},
+        };
+    } catch {
+        return {
+            props: {socials: null}
         };
     }
 
-    return {
-        props: {socials:data},
-    };
 };
 
 const Index = ({socials}) => {
@@ -26,7 +33,7 @@ const Index = ({socials}) => {
                 <title>Home</title>
             </Head>
             <Heading text="Next.JS"></Heading>
-            <Socials socials={socials} />
+            <Socials socials={socials}/>
         </div>
     );
 };
