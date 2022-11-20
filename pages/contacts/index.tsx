@@ -6,6 +6,7 @@ import {FC} from "react";
 import {contactType} from "../../types";
 
 
+
 const url = 'https://jsonplaceholder.typicode.com/users';
 
 export const getStaticProps:GetStaticProps = async () => {

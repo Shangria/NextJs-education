@@ -1,6 +1,13 @@
 import Head from "next/head";
 import Heading from "../components/Heading";
 import Socials from "../components/Socials";
+import {FC} from "react";
+import {socialsType} from "../types";
+
+type SocialsProps = {
+    socials: [socialsType]
+}
+
 
 
 export const getStaticProps = async () => {
@@ -26,7 +33,7 @@ export const getStaticProps = async () => {
 
 };
 
-const Index = ({socials}) => {
+const Index:FC<SocialsProps> = ({socials}) => {
     return (
         <div>
             <Head>

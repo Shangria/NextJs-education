@@ -12,4 +12,10 @@ export type headingType={
 export type postType={
     title:string,
     body:string,
+    id:string
+}
+export type socialsType={
+    id:string,
+    icon:string,
+    path:string,
 }

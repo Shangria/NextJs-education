@@ -10,6 +10,7 @@ type contactTypeProps = {
 
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
+    // @ts-ignore
     const {id} = context.params;
     const url = `https://jsonplaceholder.typicode.com/users/${id}`;
     const response = await fetch(url);
